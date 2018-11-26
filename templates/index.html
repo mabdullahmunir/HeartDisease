@@ -4,30 +4,134 @@
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <title>Heart Disease</title>
+		<title>Heart Disease</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script type="text/javascript"
         src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
   </head>
   <body>
-    <div>
-      Age : <input type="text" id="age"><br>
-      Sex : <input type="text" id="sex"><br>
-      Chest-pain type : <input type="text" id="chest"><br>
-      resting blood pressure : <input type="text" id="bpressure"><br>
-      serum cholestrol : <input type="text" id="cholesterol"><br>
-      fasting blood sugar > 120 mg/dl : <input type="text" id="blood_sugar"><br>
-      resting ECG : <input type="text" id="ecg"><br>
-      max-heart rate achieved : <input type="text" id="max_heart"><br>
-      exercise induced angina : <input type="text" id="angina"><br>
-      ST depression induced by exercise relative to rest : <input type="text" id="st_depression"><br>
-      peak exercise ST segment : <input type="text" id="peak_st"><br>
-      number of major vessels (0-3) colored by flourosopy : <input type="text" id="c_vessel"><br>
-      thal : <input type="text" id="thal"><br>
-      <button class="button" onclick="predict()" type="button">Predict</button>
-
-      <br><br><br><br>
-      Result : 
-    </div>
+		<div class="container-fluid">
+			<div class="py-3 text-center bg-info">
+				<h2>Dr. Heart</h2>
+				<p class="lead"></p>
+			</div>
+			<div class="py-3 row">
+				<div class="col-md-6">
+					<div class="alert alert-info" role="alert">
+						<h5 class="alert-heading">Petunjuk Penggunaan:</h5>
+						<p>TODO</p><hr>
+						<p class="mb-0">Pengembang:</p>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label>Umur</label>
+						</div>
+						<div class="col-md-8">
+							<input class="form-control" id="age" type="text">
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label>Jenis Kelamin</label>
+						</div>
+						<div class="col-md-8">
+							<input class="form-control" id="age" type="text">
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label>Chest-pain type</label>
+						</div>
+						<div class="col-md-8">
+							<input class="form-control" id="chest" type="text">
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label>Tekanan Darah</label>
+						</div>
+						<div class="col-md-8">
+							<input class="form-control" id="bpressure" type="text">
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label>Kolestrol Serum</label>
+						</div>
+						<div class="col-md-8">
+							<input class="form-control" id="cholesterol" type="text">
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label>Gula Darah Puasa</label>
+						</div>
+						<div class="col-md-8">
+							<input class="form-control" id="blood_sugar" type="text" placeholder="> 120 mg/dl">
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label>resting ECG</label>
+						</div>
+						<div class="col-md-8">
+							<input class="form-control" id="ecg" type="text">
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label>max-heart rate achieved</label>
+						</div>
+						<div class="col-md-8">
+							<input class="form-control" id="max_heart" type="text">
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label>exercise induced angina</label>
+						</div>
+						<div class="col-md-8">
+							<input class="form-control" id="angina" type="text">
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label>ST depression</label>
+						</div>
+						<div class="col-md-8">
+							<input class="form-control" id="st_depression" type="text">
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label>peak exercise ST segment</label>
+						</div>
+						<div class="col-md-8">
+							<input class="form-control" id="peak_st" type="text">
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label>number of major vessels (0-3) colored by flourosopy</label>
+						</div>
+						<div class="col-md-8">
+							<input class="form-control" id="c_vessel" type="text">
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label>thal</label>
+						</div>
+						<div class="col-md-8">
+							<input class="form-control" id="thal" type="text">
+						</div>
+					</div>
+					<button class="button btn-success" onclick="predict()">Prediksi</button>
+				</div>
+			</div>
+		</div>
   </body>
 
   <script type="text/javascript">

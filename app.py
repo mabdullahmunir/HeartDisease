@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 @app.route("/predict", methods=['POST'])
 def predict():
-	print request.form
+	# print request.form
 	with open('model', 'rb') as fin:
 		mdl = pickle.load(fin)
 
