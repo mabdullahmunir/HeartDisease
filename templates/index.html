@@ -1,4 +1,4 @@
-{% block body %}
+<!-- {% block body %} -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -8,19 +8,31 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script type="text/javascript"
         src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='heart-disease.css') }}">
+        <script type="text/javascript" src="{{ url_for('static',filename='index.js') }}"></script>
   </head>
   <body>
 		<div class="container-fluid">
 			<div class="py-3 text-center bg-info">
-				<h2>Dr. Heart</h2>
+				<h2 class="top-title">Heart Disease Detector</h2>
 				<p class="lead"></p>
 			</div>
 			<div class="py-3 row">
 				<div class="col-md-6">
 					<div class="alert alert-info" role="alert">
 						<h5 class="alert-heading">Petunjuk Penggunaan:</h5>
-						<p>TODO</p><hr>
-						<p class="mb-0">Pengembang:</p>
+						<p>Masukan data-data yang ada pada tabel disebelah kanan.<br>Ketika semua data sudah diinput, silahkan click tombol prediksi untuk mengetahui
+						ada atau tidaknya penyakit dari data yang dimasukan.
+						</p><hr>
+						<p class="mb-0">Pengembang: 
+						<br><ul class="developer">
+							<li><span class="nama-team">C</span>hristian</li>
+							<li><span class="nama-team">E</span>nsof</li>
+							<li><span class="nama-team">M</span>unir</li>
+							<li><span class="nama-team">A</span>lfian</li>
+							<li><span class="nama-team">S</span>eldi</li>
+						</ul>
+						</p>
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -37,7 +49,7 @@
 							<label>Jenis Kelamin</label>
 						</div>
 						<div class="col-md-8">
-							<input class="form-control" id="age" type="text">
+							<input class="form-control" id="sex" type="text">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -133,44 +145,5 @@
 			</div>
 		</div>
   </body>
-
-  <script type="text/javascript">
-    function predict() {
-      let age = document.getElementById("age").value;
-      let sex = document.getElementById("sex").value;
-      let chest = document.getElementById("chest").value;
-      let bpressure = document.getElementById("bpressure").value;
-      let cholesterol = document.getElementById("cholesterol").value;
-      let blood_sugar = document.getElementById("blood_sugar").value;
-      let ecg = document.getElementById("ecg").value;
-      let max_heart = document.getElementById("max_heart").value;
-      let angina = document.getElementById("angina").value;
-      let st_depression = document.getElementById("st_depression").value;
-      let peak_st = document.getElementById("peak_st").value;
-      let c_vessel = document.getElementById("c_vessel").value;
-      let thal = document.getElementById("thal").value;
-
-      let param = {
-        "age" : age,
-        "sex" : sex,
-        "chest" : chest,
-        "bpressure" : bpressure,
-        "cholesterol" : cholesterol,
-        "blood_sugar" : blood_sugar,
-        "ecg" : ecg,
-        "max_heart" : max_heart,
-        "angina" : angina,
-        "st_depression" : st_depression,
-        "peak_st" : peak_st,
-        "c_vessel" : c_vessel,
-        "thal" : thal,
-      }
-
-      $.post( "predict", param)
-        .done(function( data ) {
-         
-        });
-    }
-  </script>
 </html>
-{% endblock %}
+<!-- {% endblock %} -->
