@@ -1,0 +1,72 @@
+{% block body %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Heart Disease</title>
+    <script type="text/javascript"
+        src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  </head>
+  <body>
+    <div>
+      Age : <input type="text" id="age"><br>
+      Sex : <input type="text" id="sex"><br>
+      Chest-pain type : <input type="text" id="chest"><br>
+      resting blood pressure : <input type="text" id="bpressure"><br>
+      serum cholestrol : <input type="text" id="cholesterol"><br>
+      fasting blood sugar > 120 mg/dl : <input type="text" id="blood_sugar"><br>
+      resting ECG : <input type="text" id="ecg"><br>
+      max-heart rate achieved : <input type="text" id="max_heart"><br>
+      exercise induced angina : <input type="text" id="angina"><br>
+      ST depression induced by exercise relative to rest : <input type="text" id="st_depression"><br>
+      peak exercise ST segment : <input type="text" id="peak_st"><br>
+      number of major vessels (0-3) colored by flourosopy : <input type="text" id="c_vessel"><br>
+      thal : <input type="text" id="thal"><br>
+      <button class="button" onclick="predict()" type="button">Predict</button>
+
+      <br><br><br><br>
+      Result : 
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    function predict() {
+      let age = document.getElementById("age").value;
+      let sex = document.getElementById("sex").value;
+      let chest = document.getElementById("chest").value;
+      let bpressure = document.getElementById("bpressure").value;
+      let cholesterol = document.getElementById("cholesterol").value;
+      let blood_sugar = document.getElementById("blood_sugar").value;
+      let ecg = document.getElementById("ecg").value;
+      let max_heart = document.getElementById("max_heart").value;
+      let angina = document.getElementById("angina").value;
+      let st_depression = document.getElementById("st_depression").value;
+      let peak_st = document.getElementById("peak_st").value;
+      let c_vessel = document.getElementById("c_vessel").value;
+      let thal = document.getElementById("thal").value;
+
+      let param = {
+        "age" : age,
+        "sex" : sex,
+        "chest" : chest,
+        "bpressure" : bpressure,
+        "cholesterol" : cholesterol,
+        "blood_sugar" : blood_sugar,
+        "ecg" : ecg,
+        "max_heart" : max_heart,
+        "angina" : angina,
+        "st_depression" : st_depression,
+        "peak_st" : peak_st,
+        "c_vessel" : c_vessel,
+        "thal" : thal,
+      }
+
+      $.post( "predict", param)
+        .done(function( data ) {
+         
+        });
+    }
+  </script>
+</html>
+{% endblock %}
