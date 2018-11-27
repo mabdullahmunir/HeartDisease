@@ -1,149 +1,203 @@
-<!-- {% block body %} -->
+{% block body %}
 <!DOCTYPE html>
 <html>
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-		<title>Heart Disease</title>
+		<title>Heart Disease Detector</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script type="text/javascript"
-        src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='heart-disease.css') }}">
-        <script type="text/javascript" src="{{ url_for('static',filename='index.js') }}"></script>
+		<link rel="icon" href="{{ url_for('static', filename='icon.png') }}" type="image/x-icon"/>
+		<link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='icon.png') }}" />
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
   </head>
   <body>
 		<div class="container-fluid">
 			<div class="py-3 text-center bg-info">
-				<h2 class="top-title">Heart Disease Detector</h2>
-				<p class="lead"></p>
+				<h2 class="top-title"><img src="{{ url_for('static', filename='icon.png') }}" height="60" width="60"> Heart Disease Detector</h2>
 			</div>
 			<div class="py-3 row">
-				<div class="col-md-6">
+				<div class="col-md-4">
 					<div class="alert alert-info" role="alert">
-						<h5 class="alert-heading">Petunjuk Penggunaan:</h5>
-						<p>Masukan data-data yang ada pada tabel disebelah kanan.<br>Ketika semua data sudah diinput, silahkan click tombol prediksi untuk mengetahui
-						ada atau tidaknya penyakit dari data yang dimasukan.
+						<h5 class="alert-heading">Selamat datang!</h5>
+						<p>Platform ini dapat melakukan deteksi dini penyakit jantung.<br>Silahkan masukkan data-data yang terdapat pada formulir di sebelah kanan, kemudian klik prediksi untuk mengetahui hasil diagnosis Anda.
 						</p><hr>
 						<p class="mb-0">Pengembang: 
 						<br><ul class="developer">
-							<li><span class="nama-team">C</span>hristian</li>
-							<li><span class="nama-team">E</span>nsof</li>
-							<li><span class="nama-team">M</span>unir</li>
-							<li><span class="nama-team">A</span>lfian</li>
-							<li><span class="nama-team">S</span>eldi</li>
+							<li><span class="nama-team">C</span>hristian (092)</li>
+							<li><span class="nama-team">E</span>nsof (096)</li>
+							<li><span class="nama-team">M</span>unir (074)</li>
+							<li><span class="nama-team">A</span>lfian (104)</li>
+							<li><span class="nama-team">S</span>eldi (042)</li>
 						</ul>
 						</p>
 					</div>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-8">
 					<div class="form-group row">
-						<div class="col-md-4">
-							<label>Umur</label>
+						<div class="col-md-2">
+							<label>Umur *</label>
 						</div>
-						<div class="col-md-8">
-							<input class="form-control" id="age" type="text">
+						<div class="col-md-4">
+							<div class="input-group">
+								<input type="text" class="form-control" id="age">
+								<div class="input-group-append">
+									<span class="input-group-text">tahun</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<label>Jenis Kelamin *</label>
+						</div>
+						<div class="col-md-4">
+							<select class="custom-select" id="sex">
+								<option value="" disabled selected>Pilih ... </option>
+								<option value="1">(1) Laki-Laki</option>
+								<option value="0">(0) Perempuan</option>
+							</select>
 						</div>
 					</div>
 					<div class="form-group row">
+						<div class="col-md-2">
+							<label><i>Chest-pain type</i></label>
+						</div>
 						<div class="col-md-4">
-							<label>Jenis Kelamin</label>
+							<select class="custom-select" id="chest">
+								<option value="" disabled selected>Pilih ...</option>
+								<option value="1"><i>(1) Typical angina</i></option>
+								<option value="2"><i>(2) Atypical angina</i></option>
+								<option value="3"><i>(3) Non-anginal pain</i></option>
+								<option value="4"><i>(4) Asymptotic</i></option>
+							</select>
 						</div>
-						<div class="col-md-8">
-							<input class="form-control" id="sex" type="text">
-						</div>
-					</div>
-					<div class="form-group row">
-						<div class="col-md-4">
-							<label>Chest-pain type</label>
-						</div>
-						<div class="col-md-8">
-							<input class="form-control" id="chest" type="text">
-						</div>
-					</div>
-					<div class="form-group row">
-						<div class="col-md-4">
+						<div class="col-md-2">
 							<label>Tekanan Darah</label>
 						</div>
-						<div class="col-md-8">
-							<input class="form-control" id="bpressure" type="text">
+						<div class="col-md-4">
+							<div class="input-group">
+								<input type="text" class="form-control" id="bpressure">
+								<div class="input-group-append">
+									<span class="input-group-text">mmHg</span>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="form-group row">
-						<div class="col-md-4">
+						<div class="col-md-2">
 							<label>Kolestrol Serum</label>
 						</div>
-						<div class="col-md-8">
-							<input class="form-control" id="cholesterol" type="text">
-						</div>
-					</div>
-					<div class="form-group row">
 						<div class="col-md-4">
+							<div class="input-group">
+								<input type="text" class="form-control" id="cholesterol">
+								<div class="input-group-append">
+									<span class="input-group-text">mg/dl</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2">
 							<label>Gula Darah Puasa</label>
 						</div>
-						<div class="col-md-8">
-							<input class="form-control" id="blood_sugar" type="text" placeholder="> 120 mg/dl">
+						<div class="col-md-4">
+							<select class="custom-select" id="blood_sugar" required>
+								<option value="" disabled selected>Pilih ...</option>
+								<option value="1"><i>(1) > 120 mg/dl</i></option>
+								<option value="0"><i>(0) &lt;= 120 mg/dl</i></option>
+							</select>
 						</div>
 					</div>
 					<div class="form-group row">
+						<div class="col-md-2">
+							<label><i>Resting ECG</i></label>
+						</div>
 						<div class="col-md-4">
-							<label>resting ECG</label>
+							<select class="custom-select" id="ecg" required>
+								<option value="" disabled selected>Pilih ...</option>
+								<option value="0"><i>(0) Normal</i></option>
+								<option value="1"><i>(1) Having ST-T wave abnormality</i></option>
+								<option value="2"><i>(2) Left ventricular hyperthropy</i></option>
+							</select>
 						</div>
-						<div class="col-md-8">
-							<input class="form-control" id="ecg" type="text">
+						<div class="col-md-2">
+							<label><i>Max-heart rate achieved</i></label>
 						</div>
-					</div>
-					<div class="form-group row">
 						<div class="col-md-4">
-							<label>max-heart rate achieved</label>
-						</div>
-						<div class="col-md-8">
 							<input class="form-control" id="max_heart" type="text">
 						</div>
 					</div>
 					<div class="form-group row">
+						<div class="col-md-2">
+							<label><i>Exercise induced angina</i></label>
+						</div>
 						<div class="col-md-4">
-							<label>exercise induced angina</label>
+							<select class="custom-select" id="angina">
+								<option value="" disabled selected>Pilih ...</option>
+								<option value="1"><i>(1) Ya</i></option>
+								<option value="0"><i>(0) Tidak</i></option>
+							</select>
 						</div>
-						<div class="col-md-8">
-							<input class="form-control" id="angina" type="text">
+						<div class="col-md-2">
+							<label><i>ST depression</i></label>
 						</div>
-					</div>
-					<div class="form-group row">
 						<div class="col-md-4">
-							<label>ST depression</label>
-						</div>
-						<div class="col-md-8">
 							<input class="form-control" id="st_depression" type="text">
 						</div>
 					</div>
 					<div class="form-group row">
-						<div class="col-md-4">
-							<label>peak exercise ST segment</label>
+						<div class="col-md-2">
+							<label><i>Peak exercise ST segment</i></label>
 						</div>
-						<div class="col-md-8">
-							<input class="form-control" id="peak_st" type="text">
+						<div class="col-md-4">
+							<select class="custom-select" id="peak_st">
+								<option value="" disabled selected>Pilih ...</option>
+								<option value="1"><i>(1) Unsloping</i></option>
+								<option value="2"><i>(2) Flat</i></option>
+								<option value="3"><i>(3) Downsloping</i></option>
+							</select>
+						</div>
+						<div class="col-md-2">
+							<label><i>Number of major vessels</i></label>
+						</div>
+						<div class="col-md-4">
+							<input class="form-control" id="c_vessel" type="text" placeholder="0 - 3">
 						</div>
 					</div>
 					<div class="form-group row">
-						<div class="col-md-4">
-							<label>number of major vessels (0-3) colored by flourosopy</label>
+						<div class="col-md-2">
+							<label><i>Thal</i></label>
 						</div>
-						<div class="col-md-8">
-							<input class="form-control" id="c_vessel" type="text">
+						<div class="col-md-4">
+							<select class="custom-select" id="thal">
+								<option value="" disabled selected>Pilih ...</option>
+								<option value="3"><i>(3) Normal</i></option>
+								<option value="6"><i>(6) Fixed defect</i></option>
+								<option value="7"><i>(7) Reversable defect</i></option>
+							</select>
+						</div>
+						<div class="col-md-6">
+							<a class="btn btn-success" href="#" data-toggle="modal" data-target="#lgModal" data-load-url="predict">Prediksi</a>
 						</div>
 					</div>
-					<div class="form-group row">
-						<div class="col-md-4">
-							<label>thal</label>
-						</div>
-						<div class="col-md-8">
-							<input class="form-control" id="thal" type="text">
-						</div>
-					</div>
-					<button class="button btn-success" onclick="predict()">Prediksi</button>
 				</div>
 			</div>
 		</div>
+		<div class="modal fade" id="lgModal" role="dialog">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content"></div>
+			</div>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='predict.js') }}"></script>
+		<script>
+		$('#lgModal').on('show.bs.modal', function (e) {
+			if ($('#age').val() === '' || $('#sex').val() === '') {
+				$(this).find('.modal-content').load('error');
+				return;
+			}
+			const param = predict();
+			let loadurl = $(e.relatedTarget).data('load-url');
+			$(this).find('.modal-content').load(loadurl, param);
+		});
+		</script>
   </body>
 </html>
-<!-- {% endblock %} -->
+{% endblock %}

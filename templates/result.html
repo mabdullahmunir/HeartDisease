@@ -1,0 +1,48 @@
+{% block body %}
+<div class="modal-header">
+	<h5 class="modal-title" id="exampleModalLabel"><b>Hasil Diagnosis</b></h5>
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="modal-body">
+	{% if (diagnosis == 0) %}
+	<div class="alert alert-success" role="alert">
+		<b>Level: {{ diagnosis }}</b><br>
+		Anda didiagnosis aman dari penyakit jantung.
+	</div>
+	{% elif (diagnosis == 1 or diagnosis == 2) %}
+	<div class="alert alert-warning" role="alert">
+		<b>Level: {{ diagnosis }}</b><br>
+		Anda didiagnosis mempunyai potensi ringan penyakit jantung.
+	</div>
+	{% elif (diagnosis == 3 or diagnosis == 4) %}
+	<div class="alert alert-danger" role="alert">
+		<b>Level: {{ diagnosis }}</b><br>
+		Anda didiagnosis mempunyai potensi berat penyakit jantung.
+	</div>
+	{% endif %}
+	<div>
+		<b>Data yang diberikan:</b>
+		<div class="row">
+			<div class="col-md-6">
+				Umur: {{ data[0] }}<br>
+				<i>Chest-pain type</i>: {{ data[2] }}<br>
+				Kolestrol Serum: {{ data[4] }}<br>
+				<i>Resting ECG</i>: {{ data[6] }}<br>
+				<i>Exercise induced angina</i>: {{ data[8] }}<br>
+				<i>Peak exercise ST segment</i>: {{ data[10] }}<br>
+				<i>Thal</i>: {{ data[12] }}
+			</div>
+			<div class="col-md-6">
+				Jenis Kelamin: {{ data[1] }}<br>
+				Tekanan Darah: {{ data[3] }}<br>
+				Gula Darah Puasa: {{ data[5] }}<br>
+				<i>Max-heart rate achieved</i>: {{ data[7] }}<br>
+				<i>ST depression</i>: {{ data[9] }}<br>
+				<i>Number of major vessels</i>: {{ data[11] }}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
